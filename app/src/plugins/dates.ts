@@ -18,7 +18,7 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 
 export function renderDaysAgo(lastUpdated: number) {
   const now = new Date().getTime();
-  const month1 = new Date().getMonth();
+  const month1 = new Date().getMonth()+1;
 
   const diff = now - lastUpdated;
   const monthsAgo = month1 - lastUpdated;
