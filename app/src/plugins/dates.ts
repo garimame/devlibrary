@@ -17,7 +17,8 @@
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 export function renderDaysAgo(lastUpdated: number) {
-  const now = new Date().getMonth();
+  const now = new Date().getTime();
+  const month = new Date().getMonth();
 
   const diff = now - lastUpdated;
   const daysAgo = Math.floor(diff / DAY_MS);
@@ -27,9 +28,9 @@ export function renderDaysAgo(lastUpdated: number) {
   } else if (daysAgo === 1) {
     return "yesterday";
   } 
-  
+
   else
   {
-    return `${now} months ago`;
+    return `${month} months ago`;
   }
 }
