@@ -27,13 +27,8 @@ export function renderDaysAgo(lastUpdated: number) {
 
   if (daysAgo <= 0) {
     return "today";
-  } else if (daysAgo === 1) {
-    return "yesterday";
-  } 
-  else if (daysAgo <= 31)
-  {
-    return `${daysAgo} days ago`;
   }
+  
   else
   {
     return `${month1} months ago`;
