@@ -17,20 +17,21 @@
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 export function renderDaysAgo(lastUpdated: number) {
-  const now = new Date().getTime();
-  const month1 = new Date().getMonth()+1;
+  const now = new Date();
 
-  const diff = now - lastUpdated;
-  const monthsAgo = month1 - lastUpdated;
+  const diff = now.getTime() - lastUpdated;
   const daysAgo = Math.floor(diff / DAY_MS);
   
-
   if (daysAgo <= 0) {
     return "today";
-  }
-  
-  else
-  {
-    return `${month1} months ago`;
+  } else if (daysAgo === 1) {
+    return "yesterday";
+  } else if (daysAgo > 30) {
+    const lastUpdatedDate = new Date(lastUpdated);
+    let monthsAgo = (now.getFullYear() - lastUpdatedDate.getFullYear()) * 12;
+    monthsAgo = monthsAgo + now.getMonth() - lastUpdatedDate.getMonth();
+    return `${monthsAgo} months ago`;
+  } else {
+    return `${daysAgo} days ago`;
   }
 }
